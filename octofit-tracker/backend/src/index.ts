@@ -7,7 +7,7 @@ import apiRouter from './routes/api';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = 8000;
 
 const codespaceName = process.env.CODESPACE_NAME;
 const baseUrl = codespaceName
