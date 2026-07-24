@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import db from './config/database';
+import apiRouter from './routes/api';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ const baseUrl = codespaceName
 
 app.use(cors());
 app.use(express.json());
+app.use('/api', apiRouter);
 
 app.get('/api/', (_req, res) => {
   res.json({ message: 'OctoFit Tracker API is running', baseUrl });
