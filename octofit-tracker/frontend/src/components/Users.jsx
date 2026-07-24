@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
-import { getApiBase } from '../apiBase';
+
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME;
+const USERS_URL = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/users/`
+  : 'http://localhost:8000/api/users/';
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -7,7 +11,7 @@ function Users() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${getApiBase()}/api/users/`)
+    fetch(USERS_URL)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
